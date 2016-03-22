@@ -1,7 +1,8 @@
 var ball = {
-  x: 20,
-  y: 200,
+  x: 300,
+  y: 380,
   size: 15,
+  incrementStep: -1,
 
   display: function () {
     // note that to access any of ball's properties, you must use dot notation, using the special keyword this
@@ -14,17 +15,17 @@ var ball = {
   },
 
   move: function () {
-    this.x += 1; // this line is the same as: this.x = this.x + 1;
+    this.y += this.incrementStep; // this line is the same as: this.x = this.x + 1;
   },
 
   checkForBounce: function () {
-    if (this.x > width - this.size / 2) this.bounce();
-    if (this.x < 0 + this.size / 2) this.bounce();
+    if (this.y > height - this.size / 2) this.bounce();
+    if (this.y < 0 + this.size / 2) this.bounce();
   },
 
   bounce: function () {
-    // your code goes here; a hint: this will require making your own variable as well as defining this function
-    // another hint: notice that ball is defined using object literal notation
+    // change direction of the ball when either edge of the canvas has been detected.
+    this.incrementStep *= -1;
   }
 };
 
